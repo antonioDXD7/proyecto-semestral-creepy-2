@@ -1,0 +1,186 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{%static 'paginas/css/estilos.css'%}">
+
+
+</head>
+
+<body class="body2">
+
+
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark  fixed-top ">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="{% url 'inicio' %}"><img
+          src="{% static 'paginas/img/logo bajo menu/creepypasta_logo_fit.png' %}" class="logo_menu" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'inicio' %}">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'informacion' %}">INFORMACIÓN</a>
+          </li>
+          <li class="nav-item dropdown d-flex navbar-nav centrado ">
+            <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown">CUENTA </a>
+            <ul class="dropdown-menu  ">
+              <li><a class="dropdown-item text-danger " href="{% url 'tushistorias' %}">TUS HISTORIAS</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'listadom' %}">COSAS ADMI</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'ajustedatos' %}">AJUSTES DATOS</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'ajustecontrasenia' %}">AJUSTES CONTRASEÑA</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'inicio' %}">CERRAR SESIÓN</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav justify-content-end navbar-nav centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'logueate' %}">ACCEDER</a>
+          </li>
+        </ul>
+        <ul class="nav justify-content-end navbar-nav centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'registro' %}">REGISTRO</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container col-md-10 espaciado centrado letrasinicio  creepybordetushistorias "
+    style="margin-top: 5%; margin-bottom: 5%;">
+
+    <div class="row col-md-12 espaciado">
+      <div class="creepybordermenuinicio  col-md-12">
+        <h3>Somos una pagina amante de los crepypastas ,csp y cualquier tipo de historia de terror, pero también
+          somos amantes de la cultura otaku, ya sea, leer mangas , ver anime, leer novelas ligeras y todo lo que
+          se relacione a esto, por ello, si eres fanatico de esta cultura también, te dejamos el siguiente buscador el
+          cual te
+          servira para ver la descripcion de peliculas, series, ovas u onas que se relacione a tu búsqueda, junto a un
+          enlace para que obtengas más información del título deseado.
+        </h3>
+      </div>
+    </div>
+
+
+    <div class="row col-md-12 espaciado">
+      <div class="input-field col-md-1"></div>
+      <div class="creepyborderegistro  col-md-10">
+        <p>ALGUNAS REGLAS SON LAS SIGUIENTES AL MOMENTO DE BUSCAR ALGO:<BR>
+          1)Lo que este buscando debe de tener relacion con el mundo del anime <br>
+          2)Puede buscar tanto como el nombre del anime o el tipo(Ejemplo:pelicula ,ona , ova ,especial o que esten en
+          tv) <br>
+          3)Por ultimo si busca algun anime en el lado de TV y aveces en los otros
+          apartados se le mostrara lo que este mas relacionado a la palabra que
+          escribio
+          <br>(Ejemplo: si busca dragon ball : se le mostrara series que tengan relacion con la palabra dragon , etc.)
+        </p>
+      </div>
+      <div class="input-field col-md-1"></div>
+    </div>
+
+
+
+
+    <div class="row col-md-12 espaciado">
+      <form id="APIANIME">
+        <div class="row">
+          <div class="input-field col-md-3"></div>
+          <div class="input-field col-md-6  creepybordeinicio">
+            <label for="search">INGRESE LO QUE QUIERA BUSCAR Y LUEGO DE ENTER</label>
+            <input placeholder="Escribe el nombre del anime a buscar " name="search" id="buscaranime" type="text"
+              class="col-md-12 centrado">
+          </div>
+          <div class="input-field col-md-3"></div>
+        </div>
+      </form>
+    </div>
+
+
+
+    <div class="row">
+      <div id="AGREGARANIME" class="container"></div>
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="espaciado centrado container creepybordeinicio letrasinicio" style="margin-bottom: 1%;">
+    <h1>INFORMACION DEL CREADOR DE LA PAGINA :</h1>
+
+    <div class="row espaciadoadmi centrado ">
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h5 class="card-title text-center "> NOMBRES: <BR> Axel Israel Antonio</h5>
+      </div>
+
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h5 class="centrado">APELLIDOS: <BR> Cisternas Vera</h5>
+      </div>
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h6 class="centrado"> RUT :<BR>20.791.802-4</h6>
+      </div>
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h6 class="centrado">CORREO ELECTRONICO: <BR> Correo electronico</h6>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+ 
+  <script src="{%static 'paginas/js/anime.js'%}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
