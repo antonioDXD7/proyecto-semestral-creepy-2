@@ -1,5 +1,6 @@
-from django.shortcuts import redirect, render
-from .models import creepypasta, genero ,mensajesadmi2
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import CreepyPasta, Genero ,MensajesAdmi2
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -25,18 +26,19 @@ def registro (request):
     return render (request,'paginas/registrate.html')
 
 
-def historias (request):
-    return render (request,'paginas/historia1.html')
+def historias(request, idcreepypasta):
+    creepy = get_object_or_404(CreepyPasta, idcreepypasta=idcreepypasta)
+    return render (request, 'paginas/historia1.html', {'creepy': creepy})
 
 
 def listadom(request):
-    creepypasta1 = creepypasta.objects.all()
+    creepypasta1 = CreepyPasta.objects.all()
     contexto = {"lista": creepypasta1}
     return render (request,'paginas/menuadmi.html',contexto)
 
 
 def subircreepy(request):
-    generos = genero.objects.all()
+    generos = Genero.objects.all()
     contexto = {"lista_r": generos}
     return render (request,'paginas/subircreepy.html',contexto)
 
@@ -46,25 +48,25 @@ def registraM(request):
     resumen1 = request.POST['resumencreepy']
     historia1 = request.POST['historiacreepy']
     genero2 = request.POST['seleccion1']
-    genero3 = genero.objects.get(idgenero = genero2)
+    genero3 = Genero.objects.get(idgenero = genero2)
 
-    creepypasta.objects.create( imagen = imagen2, nombrecreepy = nombrec, resumen = resumen1, historia = historia1, generos = genero3)
+    CreepyPasta.objects.create( imagen = imagen2, nombrecreepy = nombrec, resumen = resumen1, historia = historia1, generos = genero3)
 
     return redirect('subircreepy')
 
 def inicio(request):
-    inicios = creepypasta.objects.all()
+    inicios = CreepyPasta.objects.all()
     contexto = {"listo": inicios}
     return render (request,'paginas/inicio.html',contexto)
 
 def tushistorias (request):
-    tushistorias1 = creepypasta.objects.all()
+    tushistorias1 = CreepyPasta.objects.all()
     contexto = {"listos": tushistorias1}
     return render (request,'paginas/tuscreepy.html',contexto)
 
 
 def vermensajesadmi (request):
-    mensajes = mensajesadmi2.objects.all()
+    mensajes = MensajesAdmi2.objects.all()
     contexto = {"listas": mensajes}
     return render (request,'paginas/vermensajesadmi.html',contexto)
 
@@ -77,20 +79,29 @@ def enviarmensajeadmi (request):
 def registraMEN(request):
     mensajes3 = request.POST['mensajecreepy']
     consulta3 = request.POST['motivocreepycrear']
-    mensajesadmi2.objects.create(  mensaje = mensajes3 ,consultasadmi = consulta3) 
+    MensajesAdmi2.objects.create(  mensaje = mensajes3 ,consultasadmi = consulta3) 
 
     return redirect('enviarmensajeadmi')
 
 def eliminarcreepy (request, codigos):
 
-    borrar = creepypasta.objects.get(idcreepypasta=codigos)
+    borrar = CreepyPasta.objects.get(idcreepypasta=codigos)
     borrar.delete()
 
     return redirect (to="listadom")
 
 def borrarmensajes (request, id):
 
-    borrarmensaje = mensajesadmi2.objects.get(idmensaje=id)
+    borrarmensaje = MensajesAdmi2.objects.get(idmensaje=id)
     borrarmensaje.delete()
 
     return redirect (to="vermensajesadmi")
+
+def añadir_megusta(request, idcreepypasta):
+    creepy = get_object_or_404(CreepyPasta, idcreepypasta=idcreepypasta)
+    if request.user in creepy.me_gusta.all():
+        creepy.me_gusta.remove(request.user)
+    else:
+        creepy.me_gusta.add(request.user)
+    creepy.save()
+    return redirect(to='inicio')

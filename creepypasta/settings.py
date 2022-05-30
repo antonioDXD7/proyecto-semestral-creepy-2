@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'paginas',
+    'usuarios'
 ]
 
 MIDDLEWARE = [
@@ -76,15 +77,15 @@ WSGI_APPLICATION = 'creepypasta.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/xe',
-        'USER': 'vera',
-        'PASSWORD': '123456789',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'USER': 'vera',
+        # 'PASSWORD': '123456789',
+        # 'TEST': {
+        #     'USER': 'default_test',
+        #     'TBLSPACE': 'default_test_tbls',
+        #     'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        # },
     }
 }
 
@@ -132,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'usuarios.Usuario'

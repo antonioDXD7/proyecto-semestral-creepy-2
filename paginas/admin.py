@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import genero, creepypasta ,mensajesadmi2
+from .models import Genero, CreepyPasta ,MensajesAdmi2
 # Register your models here.
-admin.site.register(genero)
-admin.site.register(creepypasta)
-admin.site.register(mensajesadmi2)
+admin.site.register(Genero)
+admin.site.register(CreepyPasta)
+admin.site.register(MensajesAdmi2)

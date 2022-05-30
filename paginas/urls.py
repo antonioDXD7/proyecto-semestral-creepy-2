@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import borrarmensajes,eliminarcreepy,registraMEN,ajustedatos,inicio,ajustecontrasenia,historias,informacion,logueate,listadom,registro,subircreepy,tushistorias,vermensajesadmi,enviarmensajeadmi,registraM
+from .views import *
+
 
 urlpatterns = [
     path('',inicio,name="inicio"),
     path('ajustedatos/',ajustedatos,name="ajustedatos"),
     path('ajustecontrasenia/',ajustecontrasenia,name="ajustecontrasenia"),
-    path('historias/',historias,name="historias"),
+    path('historias/<slug:idcreepypasta>',historias,name="historias"),
     path('informacion/',informacion,name="informacion"),
     path('logueate/',logueate,name="logueate"),
     path('listadom/',listadom,name="listadom"),
@@ -34,5 +35,7 @@ urlpatterns = [
     path('registraMEN/',registraMEN,name="registraMEN"),
     path('eliminarcreepy/<codigos>',eliminarcreepy,name="eliminarcreepy"),
     path('borrarmensajes/<id>',borrarmensajes,name="borrarmensajes"),
+    
+    path('megusta/<slug:idcreepypasta>', añadir_megusta, name='añadir_megusta')
   
 ]
