@@ -1,10 +1,8 @@
-from this import d
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
 
 
-# Create your models here.
 class Genero(models.Model):
     idgenero = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del genero")
     genero = models.CharField(max_length=30, verbose_name="Genero del creepy")
@@ -54,4 +52,4 @@ class Comentario(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f'{self.usuario}-->{self.cuerpo}'
+        return f'{self.usuario}-{self.cuerpo}'

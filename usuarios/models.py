@@ -1,7 +1,5 @@
-import random
-import string
-
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
+                                        PermissionsMixin)
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -37,6 +35,7 @@ class AdministradorUsuarios(BaseUserManager):
 
         return self.create_user(correo, primer_nombre, apellido, password, **other_fields)
 
+
 class Usuario(AbstractBaseUser, PermissionsMixin):
     correo = models.EmailField(_('dirección de correo'), unique=True)
     primer_nombre = models.CharField(max_length=100)
@@ -47,7 +46,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     slug = models.SlugField(max_length=255, unique=True)
     nacimiento = models.DateTimeField(default=timezone.now)
     fecha_registro = models.DateTimeField(default=timezone.now)
-
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
