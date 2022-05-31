@@ -70,7 +70,8 @@
     <div class="row" style="margin-top: 10%; margin-bottom: 5%;">
       <div class="col-md-2 hidden-sm"></div>
       <div class="col-md-8 col-sm-12  creepyborderegistro">
-        <form action="{% url 'logueate' %}" name="registro1" id="registrof">
+        <form action="{% url 'usuarios:registrar' %}" name="registro1" id="registrof" method="post" enctype="multipart/form-data" >
+          {% csrf_token %}
           <h1 class="centrado letrasregistroylogin">Formulario de registro</h1>
           <div class="row letrasregistroylogin">
             <div class="form-group col-md-12 col-sm-12">
@@ -105,7 +106,7 @@
               <label>
                 <h4>Ingrese su fecha de nacimiento</h4>
               </label>
-              <input type="date" id="edad" name="confirmarcontraseñaregistro" class="form-control" required>
+              <input type="date" id="edad" name="edad" class="form-control" required>
             </div>
 
 
@@ -134,7 +135,7 @@
 
             <div class="col-md-3  col-sm-3"></div>
             <div class="row espaciado col-md-6 col-sm-6 ">
-              <button class="btn btn-danger" type="submit ">
+              <button class="btn btn-danger" type="submit">
                 <h5>Confirmar creacion de cuenta</h5>
               </button>
             </div>
@@ -143,8 +144,6 @@
 
             <h3 style="color: rgb(255, 0, 0);">PD:Por seguridad no le comparta a nadie estos datos , EL nombre Y
               el apellido deben inicar con mayusculas y tener una determinada cantidad de letras </h3>
-
-
 
           </div>
         </form>

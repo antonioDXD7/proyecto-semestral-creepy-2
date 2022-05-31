@@ -36,6 +36,8 @@ urlpatterns = [
     path('eliminarcreepy/<codigos>',eliminarcreepy,name="eliminarcreepy"),
     path('borrarmensajes/<id>',borrarmensajes,name="borrarmensajes"),
     
-    path('megusta/<slug:idcreepypasta>', añadir_megusta, name='añadir_megusta')
+    path('usuario/(?P<usuario>[-a-zA-Z0-9_]+)\\Z', cargar_usuario, name='cargar_usuario'),
+    path('megusta/<slug:idcreepypasta>', añadir_megusta, name='añadir_megusta'),
+    path('agregar_comentario/<slug:idcreepypasta>', agregar_comentario, name='agregar_comentario')
   
 ]

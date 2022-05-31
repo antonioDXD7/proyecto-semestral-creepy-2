@@ -45,12 +45,12 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         upload_to='usuarios/', default='usuarios/predeterminada.jpg')
 
     slug = models.SlugField(max_length=255, unique=True)
-
+    nacimiento = models.DateTimeField(default=timezone.now)
     fecha_registro = models.DateTimeField(default=timezone.now)
 
 
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     USERNAME_FIELD = 'correo'
     REQUIRED_FIELDS = ['primer_nombre', 'apellido']
     objects = AdministradorUsuarios()

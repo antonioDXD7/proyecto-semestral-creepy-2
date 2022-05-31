@@ -1,6 +1,11 @@
+from urllib import response
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import CreepyPasta, Genero ,MensajesAdmi2
-from django.http import JsonResponse
+
+from usuarios.models import Usuario
+from .models import Comentario, CreepyPasta, Genero ,MensajesAdmi2
+from django.contrib.auth.decorators import permission_required, login_required
+from django.http import HttpResponse, JsonResponse
+from django.urls import reverse
 
 # Create your views here.
 
@@ -30,7 +35,7 @@ def historias(request, idcreepypasta):
     creepy = get_object_or_404(CreepyPasta, idcreepypasta=idcreepypasta)
     return render (request, 'paginas/historia1.html', {'creepy': creepy})
 
-
+@permission_required('is_staff', login_url="inicio")
 def listadom(request):
     creepypasta1 = CreepyPasta.objects.all()
     contexto = {"lista": creepypasta1}
@@ -64,7 +69,7 @@ def tushistorias (request):
     contexto = {"listos": tushistorias1}
     return render (request,'paginas/tuscreepy.html',contexto)
 
-
+@permission_required('is_staff', login_url="inicio")
 def vermensajesadmi (request):
     mensajes = MensajesAdmi2.objects.all()
     contexto = {"listas": mensajes}
@@ -91,10 +96,8 @@ def eliminarcreepy (request, codigos):
     return redirect (to="listadom")
 
 def borrarmensajes (request, id):
-
     borrarmensaje = MensajesAdmi2.objects.get(idmensaje=id)
     borrarmensaje.delete()
-
     return redirect (to="vermensajesadmi")
 
 def añadir_megusta(request, idcreepypasta):
@@ -105,3 +108,17 @@ def añadir_megusta(request, idcreepypasta):
         creepy.me_gusta.add(request.user)
     creepy.save()
     return redirect(to='inicio')
+
+@login_required(login_url='logueate')
+def agregar_comentario(request, idcreepypasta):
+    usuario = request.user
+    creepy = get_object_or_404(CreepyPasta, idcreepypasta=idcreepypasta)
+    cuerpo = request.POST["comentario"]
+    comentario = Comentario(creepy=creepy, usuario=usuario, cuerpo=cuerpo)
+    comentario.save()
+    return redirect(reverse('historias', args=[idcreepypasta]))
+
+def cargar_usuario(request, usuario):
+    usuario = get_object_or_404(Usuario, correo=usuario)
+    creepys_usuairo = CreepyPasta.objects.filter(creador=usuario)
+    return render(request, 'paginas/usuario.html', {"usuario": usuario, "creepys": creepys_usuairo})

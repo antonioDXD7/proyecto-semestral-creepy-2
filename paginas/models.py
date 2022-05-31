@@ -1,3 +1,4 @@
+from this import d
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
@@ -28,8 +29,10 @@ class CreepyPasta(models.Model):
     
     def get_absolute_url(self):
         return reverse("historias", args=[str(self.idcreepypasta)])
+    
     def agregar_megusta(self):
         return reverse("añadir_megusta", args=[str(self.idcreepypasta)])
+    
     @property
     def obtener_comentarios(self):
         comentarios = Comentario.objects.filter(creepy=self)

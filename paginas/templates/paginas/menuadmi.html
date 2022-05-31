@@ -116,7 +116,7 @@
 
         <div class="col-sm-6 col-md-3 centrado espaciado">
           <h5 class="centrado"> NOMBRE DEL CREEPY: <br> {{ m.nombrecreepy }}</h5>
-          <h6 class="centrado espaciado">CREADOR: <br> Axel Cisternas</h6>
+          <h6 class="centrado espaciado">CREADOR: <br> {{ m.creador }}</h6>
         </div>
 
 
@@ -130,7 +130,7 @@
 
         <div class="col-sm-6 col-md-3 centrado espaciado">
           <p class="card-text text-righf">
-            <a class="btn btn-danger" href="{% url 'historias' %}" role="button">REVISAR</a>
+            <a class="btn btn-danger" href="{{ m.get_absolute_url }}" role="button">REVISAR</a>
           </p>
           <p class="card-text text-righf">
             <a class="btn btn-danger" href="{% url 'eliminarcreepy' m.idcreepypasta %}" role="button">ELIMINAR</a>
