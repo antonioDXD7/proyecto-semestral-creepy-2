@@ -1,0 +1,108 @@
+{% extends "./base.html" %} {% block content %} {% load static %}
+
+<head>
+  <title>Document</title>
+</head>
+
+<body class="body2">
+  <div
+    class="container col-md-10 espaciado centrado letrasinicio creepybordetushistorias"
+    style="margin-top: 5%; margin-bottom: 5%"
+  >
+    <div class="row col-md-12 espaciado">
+      <div class="creepybordermenuinicio col-md-12">
+        <h3>
+          Somos una pagina amante de los crepypastas ,csp y cualquier tipo de
+          historia de terror, pero también somos amantes de la cultura otaku, ya
+          sea, leer mangas , ver anime, leer novelas ligeras y todo lo que se
+          relacione a esto, por ello, si eres fanatico de esta cultura también,
+          te dejamos el siguiente buscador el cual te servira para ver la
+          descripcion de peliculas, series, ovas u onas que se relacione a tu
+          búsqueda, junto a un enlace para que obtengas más información del
+          título deseado.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row col-md-12 espaciado">
+      <div class="input-field col-md-1"></div>
+      <div class="creepyborderegistro col-md-10">
+        <p>
+          ALGUNAS REGLAS SON LAS SIGUIENTES AL MOMENTO DE BUSCAR ALGO:<br />
+          1)Lo que este buscando debe de tener relacion con el mundo del anime
+          <br />
+          2)Puede buscar tanto como el nombre del anime o el
+          tipo(Ejemplo:pelicula ,ona , ova ,especial o que esten en tv) <br />
+          3)Por ultimo si busca algun anime en el lado de TV y aveces en los
+          otros apartados se le mostrara lo que este mas relacionado a la
+          palabra que escribio
+          <br />(Ejemplo: si busca dragon ball : se le mostrara series que
+          tengan relacion con la palabra dragon , etc.)
+        </p>
+      </div>
+      <div class="input-field col-md-1"></div>
+    </div>
+
+    <div class="row col-md-12 espaciado">
+      <form id="APIANIME">
+        <div class="row">
+          <div class="input-field col-md-3"></div>
+          <div class="input-field col-md-6 creepybordeinicio">
+            <label for="search"
+              >INGRESE LO QUE QUIERA BUSCAR Y LUEGO DE ENTER</label
+            >
+            <input
+              placeholder="Escribe el nombre del anime a buscar "
+              name="search"
+              id="buscaranime"
+              type="text"
+              class="col-md-12 centrado"
+            />
+          </div>
+          <div class="input-field col-md-3"></div>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div id="AGREGARANIME" class="container"></div>
+    </div>
+  </div>
+
+  <div
+    class="espaciado centrado container creepybordeinicio letrasinicio"
+    style="margin-bottom: 1%"
+  >
+    <h1>INFORMACION DEL CREADOR DE LA PAGINA :</h1>
+
+    <div class="row espaciadoadmi centrado">
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h5 class="card-title text-center">
+          NOMBRES: <br />
+          Axel Israel Antonio
+        </h5>
+      </div>
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h5 class="centrado">
+          APELLIDOS: <br />
+          Cisternas Vera
+        </h5>
+      </div>
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h6 class="centrado">RUT :<br />20.791.802-4</h6>
+      </div>
+
+      <div class="col-sm-6 col-md-3 centrado espaciado">
+        <h6 class="centrado">
+          CORREO ELECTRONICO: <br />
+          Correo electronico
+        </h6>
+      </div>
+    </div>
+  </div>
+
+  <script src="{%static 'paginas/js/anime.js'%}"></script>
+</body>
+{% endblock %}
