@@ -1,0 +1,110 @@
+{% extends "./base.html" %} {% load static %}
+
+{% block content %}
+<head>
+  <title>HISTORIAS DE USUARIOS</title>
+</head>
+
+<body class="body1">
+
+
+
+  <div class="container   centrado espaciado" style="padding:100px 10px;">
+
+
+
+
+
+
+
+    <div class="row espaciado centrado letrasinicio creepybordermenuinicio ">
+
+      <nav class="navbar navbar-expand-sm navbar-dark espaciado creepybordeadmi">
+        <div class="container-fluid letrasinicio">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbarr">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbarr">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link text-write" href="{% url 'listadom' %}">VER HISTORIAS DE LOS USUARIOS</a>
+              </li>
+            </ul>
+            <ul class="nav justify-content-end navbar-nav centrado">
+              <li class="nav-item">
+                <a class="nav-link text-write" href="{% url 'vermensajesadmi' %}">VER MENSAJES Y QUEJAS DE LOS USUARIOS</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="col-md-12  letrasajustecuenta">
+        <h1>En este lugar podra aprobar o rechazar las historias de los usuarios</h1>
+      </div>
+
+      <!--PRIMERA CREEPY-->
+     
+      {% for m in lista %}
+      <div class="row espaciadoadmi  centrado creepybordeadmi">
+       
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h5 class="card-title text-center "> 
+            {% if m.imagen %}
+            <img src="{{ m.imagen.url }}" alt="Sin foto " id="img_arre">
+            {% endif %}
+          </h5>
+        </div>
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h5 class="centrado"> NOMBRE DEL CREEPY: <br> {{ m.nombrecreepy }}</h5>
+          <h6 class="centrado espaciado">CREADOR: <br> {{ m.creador }}</h6>
+        </div>
+
+
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h4> DESCRIPCION CORTA:</h4>
+          <p class="centrado"> {{ m.resumen }}</p>
+        </div>
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <p class="card-text text-righf">
+            <a class="btn btn-danger" href="{{ m.get_absolute_url }}" role="button">REVISAR</a>
+          </p>
+          <p class="card-text text-righf">
+            <a class="btn btn-danger" href="{% url 'eliminarcreepy' m.idcreepypasta %}" role="button">ELIMINAR</a>
+          </p>
+        </div>
+        
+      </div>
+      {% endfor %}
+      
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+{% endblock %}

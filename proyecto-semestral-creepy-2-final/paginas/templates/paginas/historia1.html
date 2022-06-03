@@ -1,0 +1,59 @@
+{% extends "./base.html" %}{% load static %}
+
+{% block content %}
+
+<head>
+  <title>creepy</title>
+</head>
+
+
+<body class="body1">
+
+
+  <div class="row espaciado centrado letrasinicio" style="margin-top: 5%; margin-bottom: 5%">
+    <div class="col-md-1 hidden-sm"></div>
+
+    <div class="col-sm-10 col-md-10 centrado espaciado">
+      <div class="card creepyborderhistorias letrasinicio">
+        <div class="card-body">
+          <h3 class="centrado">{{ creepy.nombrecreepy }}</h3>
+          <h5 class="card-title text-center">
+            <img id="img_historias" src="{{ creepy.imagen.url }}" />
+          </h5>
+          <h6 class="centrado">CREADOR: {{ creepy.creador}}</h6>
+          <h3 class="centrado">{{ creepy.historia }}</h3>
+          <div class="mb-1 border-0">
+            {% for comentario in creepy.obtener_comentarios %}
+            <p class="mb-0">
+              <strong>{{ comentario.usuario }}</strong> {{ comentario.cuerpo }}
+            </p>
+            {% endfor %}
+          </div>
+
+          <hr clas="border-0" />
+          {% if user.correo %}
+          <form class="row" enctype="multipart/form-data" action="{% url 'agregar_comentario' creepy.idcreepypasta %}"
+            id="formulario_comentario" method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center">
+              <img src="{{user.imagen_perfil.url}}" class="mx-2 rounded-circle my-auto" height="40" width="40" alt=""
+                loading="lazy" />
+              <input id="comentario" name='comentario' class="form-control my-auto mx-2"
+                placeholder="Añadir un comentario..." />
+              <div>
+                <button class="btn btn-primary btn-sm my-auto btn-block border comment-button" type="submit">
+                  Publicar
+                </button>
+              </div>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md1 hidden-sm"></div>
+  </div>
+</body>
+
+<script src="{% static 'paginas/js/validacioncomentario.js' %}"></script>
+{% endblock %}
