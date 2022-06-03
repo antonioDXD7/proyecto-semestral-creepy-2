@@ -1,0 +1,160 @@
+{% extends "./base.html" %}{% load static %}
+
+{% block content %}
+<head>
+  <title>AJUSTE DE DATOS</title>
+</head>
+
+<body class="body1">
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark  fixed-top ">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="{% url 'inicio' %}"><img
+          src="{% static 'paginas/img/logo bajo menu/creepypasta_logo_fit.png' %}" class="logo_menu" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'inicio' %}">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'informacion' %}">INFORMACIÓN</a>
+          </li>
+          <li class="nav-item dropdown d-flex navbar-nav centrado ">
+            <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown">CUENTA </a>
+            <ul class="dropdown-menu  ">
+              <li><a class="dropdown-item text-danger " href="{% url 'tushistorias' %}">TUS HISTORIAS</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'listadom' %}">COSAS ADMI</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'ajustedatos' %}">AJUSTES DATOS</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'ajustecontrasenia' %}">AJUSTES CONTRASEÑA</a></li>
+              <li><a class="dropdown-item text-danger " href="{% url 'inicio' %}">CERRAR SESIÓN</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav justify-content-end navbar-nav centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'logueate' %}">ACCEDER</a>
+          </li>
+        </ul>
+        <ul class="nav justify-content-end navbar-nav centrado">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'registro' %}">REGISTRO</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <div id="section1" class=" container centrado espaciado">
+
+    <div class="row" style="margin-top: 6%; margin-bottom: 5%;">
+      <div class="col-md-2 hidden-sm"></div>
+      <div class="col-md-8 col-sm-12  creepyborderegistro">
+        <form action="{% url 'inicio' %}" id="ajustedatoscuenta" name="ajustedecuenta">
+          <div class="row letrasajustecuenta">
+
+            <div class="form-group col-md-12 col-sm-12 ">
+
+              <h4>Su nombre actualmente es:</h4>
+
+              <h4>Axel Cisternas</h4>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Ingrese su nuevo nombre nombre</h4>
+              </label>
+              <input type="text" id="cambionombre" name="nuevonombre" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Ingrese su nuevo apellido</h4>
+              </label>
+              <input type="text" id="cambioapellido" name="nuevoapellido" class="form-control" required>
+            </div>
+
+
+            <div class="form-group col-md-12 col-sm-12 espaciado">
+
+              <h4>Su correo Electronico actualmente es:</h4>
+
+              <H4>Axelmirai@duocuc.cl</H4>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Ingrese su nuevo correo Electronico</h4>
+              </label>
+              <input type="email" id="nuevoscorreo" name="correocambio" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Confirme su nuevo correo Electronico</h4>
+              </label>
+              <input type="email" id="confirmarnuevocorreo" name="confirmarnuevocorreo" class="form-control" required>
+            </div>
+
+            <div class="col-md-12 col-sm-12 espaciado">
+              <h2>Confirme cambio con su contraseña</h2>
+            </div>
+
+
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Ingrese su contraseña</h4>
+              </label>
+              <input type="password" id="ingresarcontraseña" name="contraseñaconfirmarcambios" class="form-control"
+                required>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6">
+              <label>
+                <h4>Confirme su contraseña</h4>
+              </label>
+              <input type="password" id="confirmarconcontraseña" name="contraseñaconfirmarcambios2" class="form-control"
+                required>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-3 "></div>
+            <div class="row espaciado col-md-6 col-sm-6 ">
+              <input type="reset" class="btn btn-danger">
+            </div>
+            <div class="col-md-3 col-sm-3"></div>
+
+            <div class="col-md-3  col-sm-3"></div>
+            <div class="row espaciado col-md-6 col-sm-6 ">
+              <button class="btn btn-danger" type="submit ">
+                <h5>Confirmar modificacion de cuenta</h5>
+              </button>
+            </div>
+            <div class="col-md-3 col-sm-3 "></div>
+
+            <p id="mensajes"></p>
+
+            <h3>PD:Por seguridad no le comparta a nadie estos datos </h3>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2 hidden-sm"></div>
+    </div>
+
+  </div>
+
+
+  <script src="{%static 'paginas/js/validacionajusdatos.js'%}"></script>
+
+</body>
+{% endblock %}

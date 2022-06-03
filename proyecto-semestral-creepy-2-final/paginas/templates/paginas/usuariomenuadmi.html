@@ -1,0 +1,116 @@
+{% extends "./base.html" %} {% load static %}
+
+{% block content %}
+<head>
+  <title>USUARIOS</title>
+</head>
+
+<body class="body1">
+
+
+
+  <div class="container   centrado espaciado" style="padding:100px 10px;">
+
+
+
+
+
+
+
+    <div class="row espaciado centrado letrasinicio creepybordermenuinicio ">
+
+      <nav class="navbar navbar-expand-sm navbar-dark espaciado creepybordeadmi">
+        <div class="container-fluid letrasinicio">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbarr">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbarr">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link text-write" href="{% url 'listadom' %}">VER HISTORIAS DE LOS USUARIOS</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link text-write" href="{% url 'verusuariosadmi' %}">VER USUARIOS REGISTRADOS </a>
+                </li>
+              </ul>
+            <ul class="nav justify-content-end navbar-nav centrado">
+              <li class="nav-item">
+                <a class="nav-link text-write" href="{% url 'vermensajesadmi' %}">VER MENSAJES Y QUEJAS DE LOS USUARIOS</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="col-md-12  letrasajustecuenta">
+        <h1>En este lugar podras a los usuarios registrados en la pagina</h1>
+      </div>
+
+      <!--PRIMERA CREEPY-->
+     
+      {% for m in listas2 %}
+      <div class="row espaciadoadmi  centrado creepybordeadmi">
+       
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h5 class="card-title text-center "> 
+            {% if m.imagen_perfil %}
+            <img src="{{ m.imagen_perfil.url }}" alt="Sin foto " id="img_arre">
+            {% endif %}
+          </h5>
+        </div>
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h5 class="centrado"> Primer nombre: <br> {{ m.primer_nombre }}</h5>
+          <h5 class="centrado espaciado">Primer Apellido: <br> {{ m.apellido }}</h5>
+        </div>
+
+
+
+
+        <div class="col-sm-6 col-md-3 centrado espaciado">
+          <h5> correo: <br>{{ m.correo}} </h5>
+        </div>
+
+        
+        <div class="col-sm-6 col-md-3 centrado espaciado ">
+            <h4 class="centrado   "><a href="{% url 'cargar_usuario' m.correo %}">VER PERFIL</a></h4>
+            <p class="card-text text-righf espaciado centrado">
+                <a class="btn btn-danger" href="{% url 'borrarusuario' m.correo %}" role="button">BANEAR/ELIMINAR PERFIL</a>
+            </p>
+        </div>
+
+   
+
+
+        
+      </div>
+      {% endfor %}
+      
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+{% endblock %}
