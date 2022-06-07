@@ -1,0 +1,58 @@
+{% extends "./base.html" %}{% load static %}
+
+{% block content %}
+
+<head>
+  <title>AJUSTE DE DATOS</title>
+</head>
+
+<body class="body1">
+
+
+
+  <div id="section1" class=" container centrado espaciado">
+
+    <div style="margin-top: 20%; margin-bottom: 5%;">
+
+      <div class="col-md-2 hidden-sm"></div>
+
+      <div class="creepyborderegistro letrasajustecuenta col-md-8 col-sm-12 ">
+
+      <form action="" method="post" id="formularioAC" class="espaciado">
+        {% csrf_token %}
+        
+        <div class="form-group">
+          {{ form1 }}
+
+        </div>
+
+
+        <div class="espaciado">
+        <input type="submit" class="btn btn-danger" id="enviar" value="MODIFICAR">
+        <input type="reset" class="btn btn-danger" id="enviar" value="LIMPIAR">
+        </div>
+       
+     
+
+      </form>
+
+    </div>
+    <div class="col-md-2 hidden-sm"></div>
+
+
+
+    </div>
+  </div>
+
+
+  <script src="{%static 'paginas/js/validacionajusdatos.js'%}"></script>
+
+</body>
+{% endblock %}
+
+
+
+
+
+
+
