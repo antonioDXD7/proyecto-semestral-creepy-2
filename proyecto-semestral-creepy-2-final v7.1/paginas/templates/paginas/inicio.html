@@ -1,0 +1,65 @@
+{% extends "./base.html" %} {% load static %}
+
+{% block content %}
+<head>
+  <title>INICIO</title>
+</head>
+
+<body class="body1">
+  <div class="container centrado espaciado" style="margin-top: 8%; margin-bottom: 3%; ">
+    
+
+    <div class="row col-md-12 espaciado">
+      <div class="input-field col-md-1"></div>
+      <div class=" creepybordeinicio col-md-10 letrasinicio">
+        <H4>
+        ( EN ESTE SITIO PODRA VER LOS CREEPYPASTAS SUBIDOS POR TODOS LOS DEMAS USUARIOS )  
+        </H4>
+      </div>
+      <div class="input-field col-md-1"></div>
+    </div>
+   
+
+    <div class="row espaciado centrado letrasinicio">
+      <!--PRIMERA CREEPY-->
+      {% for m in listo %}
+      <div class="col-sm-6 col-md-4 centrado espaciado">
+        <div class="card creepybordeinicio">
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              {% if m.imagen %}
+              <img src="{{ m.imagen.url }}" alt="Sin foto " id="img_arre" />
+              {% endif %}
+            </h5>
+            <h3 class="centrado">Nombre: {{ m.nombrecreepy }}</h3>
+            <h5 class="centrad">Genero: {{ m.generos }}</h5>
+            <p class="centrado">{{ m.resumen }}</p>
+            <h6 class="centrado"><a href="{% url 'cargar_usuario' m.creador.correo %}">{{ m.creador }}</a></h6>
+            <p class="card-text text-righf">
+              <a
+                class="btn btn-dark"
+                href="{{ m.get_absolute_url }}"
+                role="button"
+                >LEER AHORA</a
+              >
+              <a
+                type="button"
+                href="{{ m.agregar_megusta }}"
+                class="fs-5 text-reset like-button"
+              >
+                {% if user in m.me_gusta.all %}
+                <i class="fas fa-heart text-danger"></i>
+                {% else%}
+                <i class="far fa-heart"></i>
+                {% endif %}
+              </a>
+              <span>{{m.me_gusta.all | length}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+{% endblock %}
